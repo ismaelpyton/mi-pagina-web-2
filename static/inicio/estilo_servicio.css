@@ -1,0 +1,217 @@
+.servicio-detalle {
+    padding: 120px 20px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #181818;
+}
+
+.servicio-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.servicio-header h1 {
+    font-family: 'Playfair Display', serif;
+    color: #d4af37;
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.servicio-subtitulo {
+    font-family: 'Montserrat', sans-serif;
+    color: #d0d0d0; /* Revertido a gris oscuro */
+    font-size: 1.2em;
+}
+
+.servicio-contenido {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.servicio-info {
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid #d4af37;
+}
+
+.servicio-descripcion h2,
+.servicio-precios h2 {
+    font-family: 'Playfair Display', serif;
+    color: #d4af37;
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.servicio-descripcion ul {
+    list-style: none;
+    padding: 0;
+}
+
+.servicio-descripcion li {
+    color: #d0d0d0; /* Revertido a gris oscuro */
+    margin: 15px 0;
+    padding-left: 25px;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.servicio-descripcion li:before {
+    content: "✓";
+    color: #d4af37;
+    position: absolute;
+    left: 0;
+}
+
+.servicio-precios {
+    margin-top: 40px;
+}
+
+.precio-opcion {
+    background-color: #121212;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.precio-opcion h3 {
+    font-family: 'Playfair Display', serif;
+    color: #d4af37;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.precio {
+    font-size: 2em;
+    color: #d4af37;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.precio-opcion ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.precio-opcion li {
+    color: #d0d0d0; /* Revertido a gris oscuro */
+    margin: 10px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.formulario-reserva {
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid #d4af37;
+}
+
+.formulario-reserva h2 {
+    font-family: 'Playfair Display', serif;
+    color: #d4af37;
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #d0d0d0; /* Revertido a gris oscuro */
+    margin-bottom: 8px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #121212;
+    color: #d0d0d0; /* Revertido a gris oscuro */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.metodo-pago-details {
+    background-color: #121212;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.metodo-pago-details p {
+    color: #d0d0d0; /* Revertido a gris oscuro */
+    margin: 10px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Estilos para el texto en la sección de contacto */
+.formulario-reserva p,
+.formulario-reserva li {
+    color: #d0d0d0;
+    font-family: 'Montserrat', sans-serif;
+    margin: 10px 0; /* Añadir un poco de margen para consistencia */
+}
+
+.formulario-reserva ul {
+    list-style: none; /* Quitar viñetas si las hubiera */
+    padding: 0;
+    margin-top: 15px;
+}
+
+.btn-reservar {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #d4af37;
+    color: #0a0a0a;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 30px;
+}
+
+.btn-reservar:hover {
+    background-color: #ffd700;
+    transform: translateY(-2px);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .servicio-contenido {
+        grid-template-columns: 1fr;
+    }
+
+    .servicio-header h1 {
+        font-size: 2.5em;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .servicio-info,
+    .formulario-reserva {
+        padding: 20px;
+    }
+}
+
+.servicio-detalle {
+    background: #181818;
+    /* ...otros estilos... */
+}

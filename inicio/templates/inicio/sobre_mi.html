@@ -1,0 +1,399 @@
+{% extends 'inicio/base.html' %}
+{% load static %}
+
+{% block title %}About Edilián Uceta{% endblock %}
+
+{% block extra_css %}
+    <style>
+        body {
+            padding-top: 70px;
+            background: linear-gradient(135deg, #101010 20%, #1f1f1f 100%);
+            color: #f0f0f0;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+        }
+        .sobre-mi-page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Estilos para la sección Core foundational knowledge */
+        .core-knowledge-list {
+            list-style: none;
+            padding: 0;
+            text-align: start; /* Alinear texto a la derecha */
+        }
+
+        .core-knowledge-list li {
+            margin: 15px 0;
+            padding-right: 20px; /* Espacio para el checkmark */
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+            color: #c5c5c5; /* Color de texto similar al resto de la página */
+        }
+
+        .core-knowledge-list li::before {
+            content: "✓"; /* Checkmark */
+            color: #d4af37; /* Dorado */
+            position: unset;
+            right: 1; /* Posicionar a la derecha */
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .sobre-mi-hero {
+            display: flex;
+            align-items: center;
+            padding: 80px 5%;
+            background: #1a1a1a; 
+            border-bottom: 2px solid #d4af37;
+            gap: 50px;
+            min-height: 60vh;
+        }
+        .hero-content { flex-basis: 60%; }
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+        .hero-content .subtitle {
+            font-size: 1.8em;
+            color: #e0e0e0;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+        .hero-content .intro-text {
+            font-size: 1.15em;
+            color: #c5c5c5;
+            margin-bottom: 30px;
+        }
+        .hero-image-container { flex-basis: 40%; text-align: center; }
+        .hero-image-container img {
+            width: 100%;
+            max-width: 380px; 
+            height: auto;
+            border-radius: 15px;
+            object-fit: cover;
+            border: 5px solid #d4af37;
+            box-shadow: 0 10px 40px rgba(212,175,55,0.35);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        .hero-image-container img:hover {
+            transform: scale(1.04);
+            box-shadow: 0 15px 55px rgba(212,175,55,0.55);
+        }
+
+        /* General Section Styling */
+        .sobre-mi-section {
+            padding: 80px 5%;
+        }
+        .sobre-mi-section.bg-darker { background-color: #141414; }
+        .sobre-mi-section.bg-lighter { background-color: #1f1f1f; }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 3.2em; 
+            text-align: center;
+            margin-bottom: 70px; 
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px; 
+            height: 4px;  
+            background-color: #d4af37;
+            border-radius: 2px;
+        }
+        
+        .item-destacado {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center; 
+            gap: 50px; 
+            margin-bottom: 80px; 
+            padding: 30px;
+            background-color: rgba(34,34,34,0.7); 
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden; 
+        }
+        .sobre-mi-section .item-destacado:nth-child(even) .item-imagen {
+            order: 1; 
+        }
+         .sobre-mi-section .item-destacado:nth-child(even) .item-info {
+            padding-left: 0; 
+            padding-right: 30px; 
+        }
+        .sobre-mi-section .item-destacado:nth-child(odd) .item-info {
+            padding-right: 0;
+            padding-left: 30px;
+        }
+
+        .item-imagen {
+            flex: 1;
+            min-width: 320px; 
+            max-width: 48%; 
+        }
+        .item-imagen img {
+            width: 100%;
+            height: auto;
+            max-height: 480px; 
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+        .item-imagen img:hover { 
+            transform: scale(1.05); 
+            filter: brightness(1.1);
+        }
+
+        .item-info {
+            flex: 1.2; 
+            min-width: 320px;
+        }
+        .item-info h3 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 2.2em; 
+            margin-bottom: 15px;
+        }
+        .item-info .lugar-fecha {
+            font-size: 1em;
+            color: #a0a0a0;
+            margin-bottom: 18px;
+            display: block;
+            font-style: italic;
+        }
+        .item-info p, .item-info ul {
+            font-size: 1.1em; 
+            color: #c5c5c5;
+            line-height: 1.9;
+        }
+        .item-info ul { list-style: none; padding-left: 0; }
+        .item-info ul li { padding-left: 28px; position: relative; margin-bottom: 12px; }
+        .item-info ul li::before { content: "✨"; color: #d4af37; position: absolute; left: 0; font-size: 1.1em; }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .info-card {
+            background-color: #252525;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #d4af37; 
+        }
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+        .info-card i { 
+            font-size: 3em; color: #d4af37; margin-bottom: 20px; display: block;
+        }
+        .info-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37; 
+            font-size: 1.7em;
+            margin-bottom: 10px;
+        }
+
+        .contacto-final { text-align: center; }
+        .contacto-final p { font-size: 1.15em; margin-bottom: 12px;}
+
+        .enlace-volver-cv {
+            display: inline-block;
+            margin: 60px auto; 
+            padding: 18px 40px; 
+            background-color: #d4af37;
+            color: #101010;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2em; 
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(212,175,55,0.3);
+        }
+        .enlace-volver-cv:hover {
+            background-color: #ffd700;
+            box-shadow: 0 10px 25px rgba(255,215,0,0.5);
+            transform: translateY(-4px);
+        }
+        .cv-center-button { text-align: center; }
+
+        @media (max-width: 992px) {
+            .item-destacado { flex-direction: column; }
+            .item-destacado:nth-child(even) .item-imagen { order: 0; } 
+            .item-imagen { max-width: 100%; }
+            .item-info { padding-left:0 !important; padding-right:0 !important; } 
+        }
+        @media (max-width: 992px) {
+            .sobre-mi-hero { flex-direction: column; text-align: center; padding: 50px 5%;}
+            .hero-content { padding-right: 0; margin-bottom:30px; }
+            .hero-image-container img { width: 250px; height: 250px; }
+            .hero-content h1 { font-size: 3.5em; }
+            .hero-content .subtitle { font-size: 1.6em; }
+            .sobre-mi-section h2, .section-title { font-size: 2.8em; margin-bottom:50px; }
+            .item-info h3 { font-size: 2em; }
+        }
+
+        @media (max-width: 768px) {
+            .sobre-mi-hero { padding: 40px 5%; }
+            .hero-image-container img { width: 200px; height: 200px; }
+            .hero-content h1 { font-size: 3em; }
+            .hero-content .subtitle { font-size: 1.4em; }
+            .hero-content .intro-text { font-size: 1.1em; }
+            .sobre-mi-section { padding: 60px 5%; }
+            .sobre-mi-section h2, .section-title { font-size: 2.4em; margin-bottom:40px; }
+            .item-destacado { gap: 30px; padding: 20px; }
+            .item-imagen { min-width: 100%; max-width: 100%; }
+            .item-info { min-width: 100%; padding-left: 0 !important; padding-right: 0 !important; }
+            .item-info h3 { font-size: 1.8em; }
+            .info-grid { gap: 20px; }
+            .info-card { padding: 25px; }
+            .info-card h3 { font-size: 1.5em; }
+            .enlace-volver-cv { padding: 15px 30px; font-size: 1.1em; }
+        }
+
+        @media (max-width: 576px) {
+            .sobre-mi-hero { padding: 30px 5%; }
+            .hero-image-container img { width: 180px; height: 180px; }
+            .hero-content h1 { font-size: 2.5em; }
+            .hero-content .subtitle { font-size: 1.2em; }
+            .hero-content .intro-text { font-size: 1em; }
+            .sobre-mi-section { padding: 40px 5%; }
+            .sobre-mi-section h2, .section-title { font-size: 2em; margin-bottom:30px; }
+            .item-destacado { gap: 20px; padding: 15px; }
+            .item-info h3 { font-size: 1.6em; }
+            .info-grid { grid-template-columns: 1fr; gap: 15px; }
+            .info-card { padding: 20px; }
+            .info-card h3 { font-size: 1.4em; }
+            .enlace-volver-cv { padding: 12px 25px; font-size: 1em; }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="sobre-mi-page-container">
+        <section class="sobre-mi-hero">
+            <div class="hero-content">
+                <h1>Edilián Uceta</h1>
+                <p class="subtitle">Biomedical Engineering & Multilingual Interpretation</p> {# Cambiado texto #}
+                <p class="intro-text">Connecting worlds through technology and languages. Passionate about innovation, intercultural communication, and solving complex challenges.</p> {# Cambiado texto #}
+            </div>
+            <div class="hero-image-container">
+                <img src="{% static 'imagenes/foto de edi mejorada.jpeg' %}" alt="Photo of Edilián Uceta"> {# Cambiado alt text #}
+            </div>
+        </section>
+
+        <section class="sobre-mi-section bg-darker">
+            <h2 class="section-title">Key Strengths</h2> {# Cambiado texto #}
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Advanced Linguistic Proficiency</h3> {# Cambiado texto #}
+                    <ul>
+                        <li>Spanish</li> {# Cambiado texto #}
+                        <li>English</li> {# Cambiado texto #}
+                        <li>Mandarin Chinese</li> {# Cambiado texto #}
+                    </ul>
+                    <p>Accurate interpretation and translation in technical and business contexts.</p> {# Cambiado texto #}
+                </div>
+                <div class="info-card">
+                    <h3>Biomedical Engineering in Training</h3> {# Cambiado texto #}
+                    <p>Student at INTEC, applying design analysis and problem-solving skills to challenges in health and technology.</p> {# Cambiado texto #}
+                    <h4 style="color: #d4af37; margin-top: 20px; margin-bottom: 10px;">Core Foundational Knowledge</h4>
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-around;"> {# Contenedor para columnas #}
+                        <ul class="core-knowledge-list" style="flex-basis: 48%; min-width: 250px;"> {# Primera columna #}
+                            <li>Electrical & Magnetic Physics</li>
+                            <li>Statics</li>
+                            <li>Physiology in Biomedical Engineering</li>
+                            <li>Biology in Biomedical Engineering</li>
+                            <li>Electric Circuits I</li>
+                            <li>Dynamics</li>
+                            <li>Electronics l</li>
+                            <li>Mechanics of Materials</li>
+                            <li>Fluid Mechanics</li>
+                            <li>Medical Imaging Techniques</li>
+                            <li>Radiodiagnosis and Therapy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sobre-mi-section bg-lighter">
+            <h2 class="section-title">Relevant Achievements & Experiences</h2> {# Cambiado texto #}
+
+            <div class="item-destacado">
+                <div class="item-imagen">
+                    <img src="{% static 'imagenes/certificado honor chino.jpeg' %}" alt="Chinese Bridge Champion" style="width: 100%; height: auto; max-width: 100%; display: block; transition: transform 0.3s ease;" class="agrandar-imagen">
+                </div>
+                <div class="item-info">
+                    <h3>14TH CHINESE-BRIDGE PROFICIENCY COMPETITION CHAMPION</h3> {# Cambiado texto #}
+                    <span class="lugar-fecha">Chinese Proficiency Competition</span> {# Cambiado texto #}
+                    <p>It was an honor to win first place among 100 contestants from 76 countries, demonstrating a deep knowledge of the Chinese language and culture. This achievement underscores my dedication and skill in intercultural communication.</p> {# Cambiado texto #}
+                </div>
+            </div>
+
+            <div class="item-destacado">
+                <div class="item-info">
+                    <h3>CHINESE LANGUAGE AMBASSADOR IN DR</h3> {# Cambiado texto #}
+                     <span class="lugar-fecha">Ministry of Foreign Affairs</span> {# Cambiado texto #}
+                    <p>Appointed by the Ministry of Foreign Affairs, a role that allows me to actively promote bilateral relations between Asia and D.R through the power of language and cultural understanding.</p> {# Cambiado texto #}
+                    <li><a href="https://www.diariolibre.com/actualidad/educacion/estudiante-dominicano-obtiene-el-primer-lugar-en-competencia-sobre-el-idioma-chino-OH30372936" target="_blank">Leer más sobre mi en Diario Libre</a></li>
+                    <li><a href="https://mirex.gob.do/mirex-entrega-reconocimiento-a-joven-dominicano-ganador-de-competencia-de-mandarin/" target="_blank">Leer mas sobre mi en Ministerio de educacion</a></li>
+                </div>
+                <div class="item-imagen">
+                    <img src="{% static 'imagenes/china embajador 1.jpeg' %}" alt="Chinese Language Ambassador" class="agrandar-imagen"> {# Cambiado alt text #}
+                </div>
+            </div>
+            
+            <div class="item-destacado">
+                <div class="item-imagen">
+                    <img src="{% static 'imagenes/AIVEPET imagen 1.jpeg' %}" alt="SKY2102-VII Project AIVEPET.SRL" class="agrandar-imagen">
+                </div>
+                <div class="item-info">
+                    <h3>Technical Interpreter: SKY2102-VII Project</h3> {# Cambiado texto #}
+                    <span class="lugar-fecha">AIVEPET.SRL | Nov. 2024 - Feb. 2025</span>
+                    <p>Key in commissioning the SKY2102-VII machine, applying engineering knowledge and multilingual skills. This project positioned AIVEPET.SRL as a pioneer in MOR/RON measurements in the DR.</p> {# Cambiado texto #}
+                </div>
+            </div>
+
+            <div class="item-destacado">
+                 <div class="item-info">
+                    <h3>Mandarin Chinese Professor</h3> {# Cambiado texto #}
+                    <span class="lugar-fecha">Confucius Institute at INTEC | Apr. 2023 - Present</span> {# Cambiado texto #}
+                    <p>I have had the privilege of guiding students from a basic knowledge of Mandarin Chinese to achieving a fluent conversational level, exceeding HSK standards in record time and fostering a deep appreciation for the language and culture.</p> {# Cambiado texto #}
+                </div>
+                <div class="item-imagen">
+                    <img src="{% static 'imagenes/clase mandarin.jpeg' %}" alt="Teaching Mandarin Chinese at Confucius Institute" class="agrandar-imagen">
+                </div>
+            </div>
+        </section>
+
+        <section class="sobre-mi-section contacto-final bg-darker">
+            <h2 class="section-title">Let's Connect</h2> {# Cambiado texto #}
+            <p>I am excited to explore how my skills can add value to your next project or initiative.</p> {# Cambiado texto #}
+            <p style="font-size:1.3em; margin-top:25px; color:#d4af37;"><strong>Email:</strong> ucetaeddy55@gmail.com | <strong>Phone:</strong> (829) 382-5898</p> {# Cambiado texto #}
+            <p style="margin-top:30px; font-size:1em; color:#aaa;"><strong>Main Reference:</strong> ELISSA ZHANG, Director of the Confucius Institute | INTEC | (849) 473-0602</p> {# Cambiado texto #}
+        </section>
+
+        <div class="cv-center-button">
+            <a href="{% url 'inicio' %}" class="enlace-volver-cv">Back to Home</a> {# Cambiado texto #}
+        </div>
+    </div>
+    <!-- Font Awesome for icons, if you decide to use them -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+
+{% endblock %}

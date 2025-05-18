@@ -1,0 +1,354 @@
+{% extends 'inicio/base.html' %}
+{% load static %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <!-- New About Me Section (two-column design) -->
+    <div class="contenedor-principal-sobre-mi">
+        <div class="seccion-descripcion-sobre-mi">
+            <h1>Edilián Uceta</h1>
+            <p class="titulo-profesional">Biomedical Engineering Major & Chinese Interpreter.</p> {# Cambiado texto #}
+            <p class="parrafo-descripcion"> INTEC engineering major and award-winning trilingual interpreter: Spanish, English, Mandarin Chinese. World champion of the 'Chinese-Bridge competition' and Ambassador of the Chinese Language in the DR. My experience ranges from teaching Mandarin to specialized technical interpretation and consulting in diplomatic and business contexts, always focused on building bridges and providing innovative solutions.</p> {# Cambiado texto #}
+            <div class="botones-sobre-mi">
+                <a href="{% url 'sobre_mi' %}" class="btn btn-mas-sobre-mi">More about me</a> {# Cambiado texto #}
+            </div>
+        </div>
+        <div class="seccion-imagen-sobre-mi">
+            <img src="{% static 'imagenes/foto de edi mejorada.jpeg' %}" alt="Photo of Edilian Uceta"> {# Cambiado alt text #}
+        </div>
+    </div>
+
+    <!-- Clients Section -->
+    <div id="clientes" class="seccion-de-clientes">
+        <h2>Clients</h2> {# Cambiado texto #}
+
+        <div class="clientes-grid">
+            <a href="{% url 'aivepet_detalle' %}" class="cliente-card-link">
+                <div class="cliente-card">
+                    <div class="cliente-imagen">
+                        <img src="{% static 'imagenes/Logo-Aivepet.png' %}" alt="Work with AIVEPET">
+                    </div>
+                    <div class="cliente-content">
+                        <h3>AIVEPET</h3>
+                        <p>Provided simultaneous interpretation services during their conference with Chinese partners, facilitating effective communication between international teams.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="{% url 'universidad_detalle' %}" class="cliente-card-link">
+                <div class="cliente-card">
+                    <div class="cliente-imagen">
+                        <img src="{% static 'imagenes/logo de intec.png' %}" alt="Work with INTEC University">
+                    </div>
+                    <div class="cliente-content">
+                        <h3>INTEC</h3>
+                        <p>Mandarin teacher and moderator at Mandarin-related events sponsored by the faculty and the Chinese Embassy in the Dominican Republic.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="{% url 'corporacion_detalle' %}" class="cliente-card-link cliente-corporacion-global-def">
+                <div class="cliente-card">
+                    <div class="cliente-imagen">
+                        <img src="{% static 'imagenes/Corporacion global DEF.jpeg' %}" alt="Work with Global DEF Corporation">
+                    </div>
+                    <div class="cliente-content">
+                        <h3>International Business Meetings</h3>
+                        <p>Assisted in crucial trade negotiations with strategic partners between the Dominican Republic and China, ensuring accurate communication of contractual terms and business strategies.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="{% url 'hayco_detalle' %}" class="cliente-card-link cliente-hayco">
+                <div class="cliente-card">
+                    <div class="cliente-imagen">
+                        <img src="{% static 'imagenes/logo Hayco.jpg' %}" alt="Work with HAYCO">
+                    </div>
+                    <div class="cliente-content">
+                        <h3>HAYCO</h3>
+                        <p>Managed an 8-technician team's adaptation for a HAYCO client's mold project, ensuring correct mold assembly and maintenance using technical expertise and Chinese fluency.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div id="servicios" class="seccion-servicios">
+        <h2>About my Services</h2> {# Cambiado texto #}
+
+        <!-- The .servicios-intro div (which contained the form) has been removed -->
+
+        <!-- Services Grid (now directly after H2) -->
+        <div class="servicios-grid">
+            <div class="servicio-card">
+                <h3>Simultaneous Interpretation</h3> {# Cambiado texto #}
+                <p>Professional real-time interpretation service for international conferences and events, in plant technical multilingual interpretation.</p> {# Cambiado texto #}
+                <ul class="servicio-caracteristicas">
+                    <li>Real-time interpretation</li>
+                    <li>Detailed and accurate translation</li>
+                    <li>Personalized service</li>
+                </ul>
+                <div class="servicio-precio">
+                    <p>From US$65</p> {# Cambiado texto #}
+                </div>
+                <a href="{% url 'servicio_simultanea' %}" class="btn-servicio">Request Service</a> {# Cambiado texto #}
+            </div>
+             <div class="servicio-card">
+                <h3>Specialized Services</h3> {# Cambiado texto #}
+                <p>How can I add value to your project?</p> {# Cambiado texto #}
+                <ul class="servicio-caracteristicas">
+                    <h3>Core Foundational Knowledge</h3>
+                    <li>Technical Multilingual Interpretation</li> {# Cambiado texto #}
+                    <li>Electrical & Magnetic Physics</li>
+                    <li>Statics</li>
+                    <li>Physiology in Biomedical Engineering</li>
+                    <li>Biology in Biomedical Engineering</li>
+                    <li>Electric Circuits I</li>
+                    <li>Dynamics</li>
+                    <li>Electronics l</li>
+                    <li>Mechanics of Materials</li>
+                    <li>Fluid Mechanics</li>
+                    <li>Medical Imaging Techniques</li>
+                    <li>Radiodiagnosis and Therapy</li>
+                </ul>
+                <div class="servicio-precio">
+                    <p>Price upon project</p> {# Cambiado texto #}
+                </div>
+                <a href="{% url 'servicio_especializados' %}" class="btn-servicio">Consult Project</a> {# Cambiado texto #}
+            </div>
+        </div>
+
+        <!-- Payment Methods Section REMOVED -->
+    </div>
+
+    <!-- New Section: Certificates and Willingness to Learn -->
+    <div class="contenedor-principal-nueva-seccion"> {# Usar una clase apropiada #}
+        <div class="seccion-imagen-nueva"> {# Usar una clase apropiada #}
+            <img src="{% static 'imagenes/edilian certificados.jpeg' %}" alt="Edilian Certificates"> {# Usar alt text apropiado #}
+        </div>
+        <div class="seccion-descripcion-nueva"> {# Usar una clase apropiada #}
+            <h2>Ready for New Challenges</h2> {# Usar un título apropiado en inglés #}
+            <p>Despite having experience in various areas of technical and business translation, I am always willing to learn and take on new challenges. I am very interested in exploring how my skills can be of help to you in your next project.</p> {# Texto traducido #}
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_css %}
+    <style>
+        body {
+            padding-top: 70px;
+            background: linear-gradient(135deg, #101010 20%, #1f1f1f 100%);
+            color: #f0f0f0;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+        }
+        .sobre-mi-page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Estilos para la nueva sección */
+        .contenedor-principal-nueva-seccion {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 80px 5%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #141414 100%); /* Degradado sutil */
+            gap: 50px;
+            border-top: 2px solid #d4af37; /* Borde superior dorado */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4); /* Sombra más pronunciada */
+        }
+
+        .seccion-imagen-nueva, .seccion-descripcion-nueva {
+            flex: 1;
+            min-width: 300px; /* Ajustar según sea necesario */
+        }
+
+        .seccion-imagen-nueva img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra mejorada */
+            transition: transform 0.4s ease, box-shadow 0.4s ease; /* Transición para hover */
+        }
+
+        .seccion-imagen-nueva img:hover {
+            transform: scale(1.03); /* Efecto zoom al pasar el ratón */
+            box-shadow: 12px 25px rgba(0, 0, 0, 0.5); /* Sombra al pasar el ratón */
+        }
+
+        .seccion-descripcion-nueva h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37; /* Color dorado */
+            font-size: 2.8em; /* Tamaño de fuente ligeramente más grande */
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.3); /* Sombra de texto */
+        }
+
+        .seccion-descripcion-nueva p {
+            font-size: 1.15em; /* Tamaño de fuente ligeramente más grande */
+            color: #c5c5c5; /* Color de texto */
+            line-height: 1.9; /* Espaciado de línea mejorado */
+        }
+
+        /* Alternar orden en pantallas pequeñas */
+        @media (max-width: 768px) {
+            .contenedor-principal-nueva-seccion {
+                flex-direction: column;
+            }
+            .seccion-imagen-nueva, .seccion-descripcion-nueva {
+                min-width: 100%;
+            }
+        }
+
+        /* Media Queries para Responsive Design */
+        @media (max-width: 992px) {
+            .contenedor-principal-sobre-mi {
+                flex-direction: column;
+                gap: 30px;
+                padding: 60px 5%;
+            }
+            .seccion-descripcion-sobre-mi, .seccion-imagen-sobre-mi {
+                min-width: 100%;
+                text-align: center;
+            }
+            .seccion-imagen-sobre-mi img {
+                max-width: 300px;
+            }
+            .seccion-descripcion-sobre-mi h1 {
+                font-size: 3em;
+            }
+            .titulo-profesional {
+                font-size: 1.6em;
+            }
+            .parrafo-descripcion {
+                font-size: 1.05em;
+            }
+            .seccion-de-clientes, .seccion-servicios, .contenedor-principal-nueva-seccion {
+                padding: 60px 5%;
+            }
+            .seccion-de-clientes h2, .seccion-servicios h2 {
+                font-size: 2.8em;
+                margin-bottom: 50px;
+            }
+            .servicio-card h3, .servicio-card p, .servicio-caracteristicas, .servicio-precio {
+                text-align: center; /* Centrar contenido de la tarjeta de servicio */
+            }
+            .contenedor-principal-nueva-seccion {
+                padding: 40px 5%;
+                gap: 20px;
+            }
+            .seccion-descripcion-nueva h2 {
+                font-size: 1.8em;
+            }
+            .seccion-descripcion-nueva h2 {
+                font-size: 2.4em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contenedor-principal-sobre-mi {
+                padding: 50px 5%;
+                gap: 25px;
+            }
+            .seccion-descripcion-sobre-mi h1 {
+                font-size: 2.5em;
+            }
+            .titulo-profesional {
+                font-size: 1.4em;
+            }
+            .parrafo-descripcion {
+                font-size: 1em;
+            }
+            .seccion-de-clientes, .seccion-servicios, .contenedor-principal-nueva-seccion {
+                padding: 50px 5%;
+            }
+            .seccion-de-clientes h2, .seccion-servicios h2 {
+                font-size: 2.4em;
+                margin-bottom: 40px;
+            }
+            .servicios-grid {
+                gap: 20px;
+                grid-template-columns: 1fr; /* Cambiado a 1fr para apilar en móviles */
+            }
+            .servicio-card {
+                padding: 20px;
+            }
+            .cliente-card h3, .servicio-card h3 {
+                font-size: 1.6em;
+            }
+            .contenedor-principal-nueva-seccion {
+                padding: 50px 5%;
+                gap: 25px;
+            }
+            .seccion-descripcion-nueva h2 {
+                font-size: 2em;
+            }
+            .seccion-descripcion-nueva p {
+                font-size: 1.05em;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .contenedor-principal-sobre-mi {
+                padding: 40px 5%;
+                gap: 20px;
+            }
+            .seccion-descripcion-sobre-mi h1 {
+                font-size: 2em;
+            }
+            .titulo-profesional {
+                font-size: 1.2em;
+            }
+            .parrafo-descripcion {
+                font-size: 0.95em;
+            }
+            .seccion-de-clientes, .seccion-servicios, .contenedor-principal-nueva-seccion {
+                padding: 30px 5%; /* Ajustado el padding para pantallas pequeñas */
+            }
+            .seccion-de-clientes h2, .seccion-servicios h2 {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+            .clientes-grid, .servicios-grid {
+                gap: 10px; /* Ajustado el espacio entre tarjetas */
+                grid-template-columns: 1fr; /* Una columna para apilar tarjetas */
+            }
+            .cliente-card, .servicio-card {
+                padding: 15px; /* Aumentado el padding interno */
+                width: 100%; /* Asegurar que la tarjeta ocupe el ancho completo */
+                box-sizing: border-box; /* Incluir padding y borde en el ancho total */
+                margin-bottom: 10px; /* Añadir espacio entre tarjetas apiladas */
+            }
+            .cliente-card:last-child {
+                margin-bottom: 0; /* Eliminar margen inferior de la última tarjeta */
+            }
+            .cliente-card h3, .cliente-card p, .cliente-content {
+                text-align: center; /* Centrar texto en pantallas pequeñas */
+                align-self: center; /* Alinear el contenido verticalmente al centro */
+            }
+             .cliente-imagen img {
+                max-width: 100%; /* Asegurar que la imagen no exceda el ancho del contenedor */
+                height: auto; /* Mantener la proporción */
+                display: block; /* Convertir a bloque para centrar */
+                margin: 0 auto 10px auto; /* Centrar horizontalmente y añadir espacio debajo */
+                object-fit: contain; /* Asegurar que la imagen se ajuste dentro del contenedor */
+            }
+            .servicio-card h3, .servicio-card p, .servicio-caracteristicas, .servicio-precio {
+                text-align: center; /* Centrar contenido de la tarjeta de servicio */
+            }
+            .contenedor-principal-nueva-seccion {
+                padding: 40px 5%;
+                gap: 20px;
+            }
+            .seccion-descripcion-nueva h2 {
+                font-size: 1.8em;
+            }
+            .seccion-descripcion-nueva p {
+                font-size: 1em;
+            }
+        }
+    </style>
+{% endblock %}

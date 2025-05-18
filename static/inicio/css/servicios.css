@@ -1,0 +1,327 @@
+/* Estilo oscuro con dorado */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    background: #111;
+    color: #FFD700;
+}
+
+/* Barra superior */
+.top-bar {
+    background: #000;
+    color: #FFD700;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+
+.top-bar-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: #FFD700;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.top-bar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+}
+
+.top-bar-nav a {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.top-bar-nav a:hover {
+    color: #fffbe6;
+}
+
+/* Contenido principal */
+main {
+    margin-top: 90px;
+    padding: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Mensajes */
+.messages {
+    margin-bottom: 2rem;
+}
+
+.message {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    color: #111;
+    background: #FFD700;
+    font-weight: bold;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Contenedor de servicio */
+.servicio-container {
+    background: #181818;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 2px solid #FFD700;
+}
+
+.servicio-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.servicio-header h1 {
+    color: #FFD700;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+}
+
+.servicio-header p {
+    color: #fffbe6;
+    font-size: 1.2rem;
+}
+
+.servicio-detalles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.servicio-info, .servicio-precios {
+    background: #111;
+    padding: 2rem 1.5rem;
+    border-radius: 10px;
+    border: 2px solid #FFD700;
+}
+
+.servicio-info h2, .servicio-precios h2 {
+    color: #FFD700;
+    margin-bottom: 1rem;
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+}
+
+.servicio-info ul, .servicio-precios ul {
+    list-style: none;
+    padding: 0;
+}
+
+.servicio-info li, .servicio-precios li {
+    margin-bottom: 0.7rem;
+    padding-left: 2rem;
+    position: relative;
+    color: #fffbe6;
+    font-size: 1.1rem;
+}
+
+.servicio-info li:before, .servicio-precios li:before {
+    content: '\2713';
+    color: #FFD700;
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+/* Sección de reserva */
+.reserva-section {
+    background: #181818;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 2px solid #FFD700;
+}
+
+.reserva-section h2 {
+    color: #FFD700;
+    margin-bottom: 1.5rem;
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #FFD700;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #FFD700;
+    border-radius: 4px;
+    font-size: 1rem;
+    background: #111;
+    color: #FFD700;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #fffbe6;
+    background: #222;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Detalles de métodos de pago */
+.metodo-pago-details {
+    background: #181818;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    border: 1px solid #FFD700;
+    color: #fffbe6;
+}
+
+.metodo-pago-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.metodo-pago-details li {
+    margin-bottom: 0.5rem;
+    color: #fffbe6;
+}
+
+/* Botón de envío */
+button[type="submit"] {
+    background: #FFD700;
+    color: #181818;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+    margin-top: 1rem;
+}
+
+button[type="submit"]:hover {
+    background: #fffbe6;
+    color: #111;
+}
+
+/* Footer */
+footer {
+    background: #000;
+    color: #FFD700;
+    padding: 3rem 0 1rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+    color: #FFD700;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: #FFD700;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #fffbe6;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,215,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .servicio-detalles {
+        grid-template-columns: 1fr;
+    }
+    .servicio-info, .servicio-precios {
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 0.5rem;
+    }
+    .servicio-container {
+        padding: 0.5rem;
+    }
+    .reserva-section {
+        padding: 1rem;
+    }
+} 

@@ -1,0 +1,186 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"> {# Cambiado lang a "en" #}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Confirmation - Edilián Uceta</title> {# Cambiado título #}
+    <link rel="stylesheet" href="{% static 'inicio/estilo_presentacion.css' %}">
+    <style>
+        body {
+            padding-top: 70px;
+            background: #111;
+            color: #e8e8e8;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+        }
+        .confirmacion-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px 40px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .confirmacion-container h1 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .confirmacion-container .mensaje-agradecimiento {
+            font-size: 1.2em;
+            color: #c0c0c0;
+            margin-bottom: 30px;
+        }
+        .resumen-reserva {
+            text-align: left;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 8px;
+            border-left: 4px solid #d4af37;
+        }
+        .resumen-reserva h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 1.6em;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .resumen-reserva p {
+            margin-bottom: 8px;
+            font-size: 1.05em;
+            color: #b0b0b0;
+        }
+        .resumen-reserva strong {
+            color: #e0e0e0;
+        }
+        .instrucciones-pago {
+            text-align: left;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        .instrucciones-pago h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 1.6em;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .instrucciones-pago p, .instrucciones-pago ul li {
+            font-size: 1.05em;
+            color: #b0b0b0;
+        }
+        .instrucciones-pago ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+        .instrucciones-pago ul li { margin-bottom: 5px; }
+
+        .enlace-volver-confirmacion { display: inline-block; margin-top: 30px; padding: 12px 28px; background-color: #d4af37; color: #101010; text-decoration: none; border-radius: 50px; font-weight: bold; transition: all 0.3s ease; }
+        .enlace-volver-confirmacion:hover { background-color: #ffd700; transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            .confirmacion-container {
+                margin: 20px 15px; 
+                padding: 20px;
+            }
+            .confirmacion-container h1 {
+                font-size: 2em;
+            }
+            .confirmacion-container .mensaje-agradecimiento {
+                font-size: 1.1em;
+            }
+            .resumen-reserva h2,
+            .instrucciones-pago h2 {
+                font-size: 1.4em;
+            }
+            .resumen-reserva p,
+            .instrucciones-pago p,
+            .instrucciones-pago ul li {
+                font-size: 1em;
+            }
+            .enlace-volver-confirmacion {
+                padding: 10px 22px;
+                font-size: 0.95em;
+            }
+        }
+        @media (max-width: 480px) {
+            .confirmacion-container h1 {
+                font-size: 1.8em;
+            }
+             .confirmacion-container .mensaje-agradecimiento {
+                font-size: 1em;
+            }
+            .resumen-reserva h2,
+            .instrucciones-pago h2 {
+                font-size: 1.3em;
+            }
+             .resumen-reserva p,
+            .instrucciones-pago p,
+            .instrucciones-pago ul li {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <a href="/" class="logo-link"> <span class="logo">E.U</span></a>
+            <nav class="top-bar-nav">
+                <ul>
+                    <li><a href="/">home|</a></li> {# Cambiado texto #}
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="confirmacion-container">
+        <h1>Request Received!</h1> {# Cambiado texto #}
+        <p class="mensaje-agradecimiento">Thank you for your request, {{ reserva.nombre }}. We have received the details and will contact you soon if necessary.</p> {# Cambiado texto #}
+
+        {% if reserva %}
+        <div class="resumen-reserva">
+            <h2>Your Request Summary</h2> {# Cambiado texto #}
+            <p><strong>Request Reference:</strong> #{{ reserva.id }}</p> {# Cambiado texto #}
+            <p><strong>Service Requested:</strong> {{ reserva.get_servicio_display }}</p> {# Cambiado texto #}
+            <p><strong>Event Date:</strong> {{ reserva.fecha_evento|date:"F d, Y" }}</p> {# Cambiado formato de fecha y texto #}
+            <p><strong>Estimated Hours:</strong> {{ reserva.horas_servicio }}</p> {# Cambiado texto #}
+            <p><strong>Estimated Amount:</strong> ${{ reserva.monto_total }} USD</p> {# Cambiado texto #}
+            <p><strong>Chosen Payment Method:</strong> {{ reserva.get_metodo_pago_display|default:reserva.metodo_pago }}</p> {# Cambiado texto #}
+        </div>
+
+        {% if reserva.metodo_pago == "transferencia" %}
+        <div class="instrucciones-pago">
+            <h2>Instructions for Bank Transfer</h2> {# Cambiado texto #}
+            <p>Please transfer the amount of <strong>${{ reserva.monto_total }} USD</strong> to the following account:</p> {# Cambiado texto #}
+            <ul>
+                <li><strong>Beneficiary:</strong> [YOUR FULL NAME OR COMPANY NAME HERE]</li> {# Cambiado texto #}
+                <li><strong>Bank:</strong> [YOUR BANK NAME HERE]</li> {# Cambiado texto #}
+                <li><strong>Account Number:</strong> [YOUR ACCOUNT NUMBER HERE]</li> {# Cambiado texto #}
+                <li><strong>Account Type:</strong> [SAVINGS/CHECKING]</li> {# Cambiado texto #}
+                <li><strong>RNC/ID (if applicable):</strong> [YOUR RNC/ID HERE]</li> {# Cambiado texto #}
+            </ul>
+            <p style="margin-top:15px;">Once the transfer is made, please send the payment receipt to <strong>[YOUR_EMAIL_HERE@example.com]</strong> and include your request reference number: <strong>#{{ reserva.id }}</strong>.</p> {# Cambiado texto #}
+            <p>Your reservation will be confirmed once we verify the payment.</p> {# Cambiado texto #}
+        </div>
+        {% elif reserva.metodo_pago == "paypal" %}
+        <div class="instrucciones-pago">
+            <h2>Payment with PayPal</h2> {# Cambiado texto #}
+            <p>Thank you for choosing PayPal. We will shortly send a payment link to your email ({{ reserva.email }}) to complete the transaction for the amount of <strong>${{ reserva.monto_total }} USD</strong>.</p> {# Cambiado texto #}
+            <p>Please check your inbox and spam folder. Your request reference is: <strong>#{{ reserva.id }}</strong>.</p> {# Cambiado texto #}
+            {# PayPal button integration could go here if you have SDK and Client ID #}
+        </div>
+        {% endif %}
+        {% endif %}
+
+        <a href="{% url 'inicio' %}" class="enlace-volver-confirmacion">Back to Home</a> {# Cambiado texto #}
+    </div>
+</body>
+</html>

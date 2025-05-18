@@ -1,0 +1,30 @@
+/* Cambiar color de fondo de toda la página */
+body {
+    background-color: #6d7985; /* azul clarito */
+    font-family: Arial, sans-serif; /* Cambiar tipografía */
+    margin: 30px;;
+    padding: 20px;
+}
+
+/* Cambiar el color del título (h1) */
+h1 {
+    color: #333399; /* azul oscuro */
+    text-align: center;
+}
+
+/* Estilo para títulos y subtítulos en detalles de cliente */
+.detalle-cliente-container-v14 h1,
+.detalle-cliente-container-v14 h2 {
+    color: #d4af37; /* Dorado */
+}
+
+/* Cambiar el color del párrafo (p) */
+p {
+    color: #666666; /* gris oscuro */
+    font-size: 18px;
+    text-align: center;
+}
+
+a {
+    margin: 50 px;
+}

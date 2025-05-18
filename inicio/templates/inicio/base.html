@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}E.U - Interpretation Services{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{% static 'imagenes/logo de edi.PNG' %}">
+    <link rel="stylesheet" href="{% static 'inicio/estilo_presentacion.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    {% block extra_css %}{% endblock %}
+    <style>
+        .agrandar-imagen {
+            cursor: pointer;
+        }
+
+        .imagen-agrandada {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .imagen-agrandada img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <a href="{% url 'inicio' %}" class="logo-link"><span class="logo">E.U</span></a>
+            <nav class="top-bar-nav">
+                <ul>
+                    <li><a href="{% url 'inicio' %}">Home</a></li>
+                    <li><a href="{% url 'sobre_mi' %}">About me</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: ucetaeddy55@gmail.com</p>
+                <p>Phone Number: (829) 382 5898</p>
+            </div>
+            <div class="footer-section">
+                <h3>WeChat</h3>
+                <img src="{% static 'imagenes/qr contacto.jpeg' %}" alt="WeChat QR Code" style="width: 150px; height: 150px;" class="agrandar-imagen">
+            </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 EDI. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imagenes = document.querySelectorAll('.agrandar-imagen');
+
+            imagenes.forEach(imagen => {
+                imagen.addEventListener('click', function() {
+                    const imagenAgrandada = document.createElement('div');
+                    imagenAgrandada.classList.add('imagen-agrandada');
+
+                    const imagenAmpliada = document.createElement('img');
+                    imagenAmpliada.src = this.src;
+
+                    imagenAgrandada.appendChild(imagenAmpliada);
+                    document.body.appendChild(imagenAgrandada);
+
+                    imagenAgrandada.addEventListener('click', function() {
+                        this.remove();
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
