@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url # Importar dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,16 +22,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^n_4xp+v$y%_vz=a**83r=wyzq)j+(lf0ns*!s(v02)mmk!6p)'
+# SECRET_KEY = 'django-insecure-^n_4xp+v$y%_vz=a**83r=wyzq)j+(lf0ns*!s(v02)mmk!6p)' # Comentar o eliminar la clave secreta en código
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your-insecure-fallback-key') # Leer de variable de entorno
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True # Comentar o eliminar DEBUG en código
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true' # Leer de variable de entorno
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'bfa1-2001-1308-1d4a-1e00-fc3d-36c3-9634-e506.ngrok-free.app',
-]
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',') # Leer de variable de entorno y dividir por coma
+# ALLOWED_HOSTS = [ # Comentar o eliminar la lista de ALLOWED_HOSTS en código
+#     '127.0.0.1',
+#     'localhost',
+#     'bfa1-2001-1308-1d4a-1e00-fc3d-36c3-9634-e506.ngrok-free.app',
+# ]
 
 
 # Application definition
@@ -82,10 +86,7 @@ WSGI_APPLICATION = 'mi_sitio.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600) # Leer de DATABASE_URL
 }
 
 
