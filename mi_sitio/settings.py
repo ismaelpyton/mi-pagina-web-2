@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'inicio',
-    'clientes', # Agregado 'clientes'
     "django_browser_reload", # Añadido para django-browser-reload
 ]
 
